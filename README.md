@@ -1,202 +1,191 @@
 <div align="center">
 
-# 🤖 MinerlexAI 💎
-
+# 🤖 MinerlexAI 💎  
 **AI-Powered Multilingual Assistant for Mining Law**
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-![Python Version](https://img.shields.io/badge/python-3.8+-blue.svg)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)  
+![Python Version](https://img.shields.io/badge/python-3.8+-blue.svg)  
 ![Framework](https://img.shields.io/badge/Framework-Streamlit-red.svg)
 
 </div>
 
 ---
 
-**MinerlexAI** simplifies understanding **Mining Laws** using AI. It combines **Google Gemini** for legal Q&A, **MBart** for translation, and **gTTS** for voice output, offering support in numerous Indian languages.
+**MinerlexAI** simplifies understanding **Mining Laws** using AI. It combines **Google Gemini** for legal Q&A, **MBart** for translation, and **gTTS** for voice output — offering support in multiple Indian languages.
 
 ---
 
 ## ✨ Features
 
-* 🧠 **AI Legal Assistant**: Leverages Google Gemini to answer mining law queries accurately.
-* 🌍 **Multilingual Power**: Translates answers into 12+ Indian languages via MBart50.
-* 🔊 **Text-to-Speech**: Converts text responses into clear audio using gTTS.
-* 🎙️ **Voice Interaction**: Allows users to ask questions using their microphone.
-* 📄 **PDF Ready**: UI prepared for PDF uploads (backend implementation pending).
-* 💡 **Interactive & Smooth UI**: Built with Streamlit for a great user experience.
+- 🧠 **AI Legal Assistant**: Uses Google Gemini to answer mining law queries accurately.
+- 🌍 **Multilingual Support**: Translates answers into 12+ Indian languages via MBart50.
+- 🔊 **Text-to-Speech**: Converts text responses into audio using gTTS.
+- 🎙️ **Voice Interaction**: Allows users to ask questions using a microphone.
+- 📄 **PDF Ready**: UI supports PDF uploads (backend coming soon).
+- 💡 **Interactive UI**: Built with Streamlit for a smooth user experience.
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Tool / Library                       | Purpose                     |
-| :----------------------------------- | :-------------------------- |
-| **Streamlit** | Interactive Web UI          |
-| **Google Gemini** (`google.generativeai`) | Core Q&A Generation       |
-| **MBart50** (HuggingFace Transformers) | Neural Machine Translation  |
-| **gTTS** (Google Text-to-Speech)     | Speech Synthesis            |
-| **SpeechRecognition** | Voice Input Processing      |
-| **python-dotenv** | Environment Variables       |
-| **PyTorch** | ML Model Backend (for MBart)|
+| Tool / Library                          | Purpose                          |
+|----------------------------------------|----------------------------------|
+| **Streamlit**                          | Interactive Web UI               |
+| **Google Gemini** (`google.generativeai`) | Core Q&A Generation          |
+| **MBart50** (HuggingFace Transformers) | Neural Machine Translation       |
+| **gTTS** (Google Text-to-Speech)       | Speech Synthesis                 |
+| **SpeechRecognition**                  | Voice Input Processing           |
+| **python-dotenv**                      | Environment Variables Management |
+| **PyTorch**                            | ML Backend for MBart             |
 
 ---
 
 ## ⚙️ Application Workflow
 
-This diagram shows how MinerlexAI processes user requests:
-
 ```mermaid
 graph TD
-    A[🗣️ User Input (Text/Voice)] --> B(🖥️ Streamlit Interface);
+    A["🗣️ User Input (Text/Voice)"] --> B["🖥️ Streamlit Interface"]
 
     subgraph "Input Processing"
-        B -- If Voice --> C(🎤 Speech Recognition);
-        C -- Text Query --> D[📝 Query Text];
-        B -- If Text --> D;
+        B -- "If Voice" --> C["🎤 Speech Recognition"]
+        C --> D["📝 Query Text"]
+        B -- "If Text" --> D
     end
 
     subgraph "Core Logic"
-        D --> E(🧠 Google Gemini API);
-        E -- English Response --> F[📜 Raw Response];
+        D --> E["🧠 Google Gemini API"]
+        E --> F["📜 Raw Response"]
     end
 
     subgraph "Output Processing"
-        F --> G{🔄 Translate?};
-        G -- Yes --> H(🌍 MBart Translation);
-        H -- Translated Text --> I[✅ Final Text];
-        G -- No (English) --> I;
-        I --> J(📄 Display Text in UI);
-        I --> K{🔊 Generate Audio?};
-        K -- Yes --> L(🗣️ gTTS);
-        L -- Audio Output --> M(🎶 Play Audio in UI);
+        F --> G{"🔄 Translate?"}
+        G -- "Yes" --> H["🌍 MBart Translation"]
+        H --> I["✅ Final Text"]
+        G -- "No (English)" --> I
+        I --> J["📄 Display Text in UI"]
+        I --> K{"🔊 Generate Audio?"}
+        K -- "Yes" --> L["🗣️ gTTS"]
+        L --> M["🎶 Play Audio in UI"]
     end
+```
 
-    style A fill:#f9f,stroke:#333,stroke-width:2px
-    style B fill:#ccf,stroke:#333,stroke-width:2px
-    style E fill:#lightgrey,stroke:#333,stroke-width:2px
-    style J fill:#cfc,stroke:#333,stroke-width:2px
-    style M fill:#cfc,stroke:#333,stroke-width:2px
-````
-
-**Flow Explanation:**
-
-1.  The user provides input (text/voice) via the **Streamlit Interface**.
-2.  Voice input is converted to text using **Speech Recognition**.
-3.  The query text is sent to the **Google Gemini API**.
-4.  Gemini returns an English response.
-5.  If requested, **MBart** translates the response.
-6.  The final text (English or translated) is prepared.
-7.  The text is **displayed** in the Streamlit UI.
-8.  If requested, **gTTS** generates audio from the final text.
-9.  The generated audio is made **playable** in the UI.
-
------
+---
 
 ## 📦 Installation Guide
 
-1.  **Clone the Repository:**
+### 1. Clone the Repository
 
-    ```bash
-    git clone [https://github.com/yourusername/minerlexai.git](https://github.com/yourusername/minerlexai.git)
-    cd minerlexai
-    ```
+```bash
+git clone https://github.com/yourusername/minerlexai.git
+cd minerlexai
+```
 
-2.  **Set Up Virtual Environment** (Recommended):
+### 2. Set Up Virtual Environment (Recommended)
 
-    ```bash
-    # Create environment
-    python -m venv venv
+```bash
+# Create virtual environment
+python -m venv venv
 
-    # Activate environment
-    # Linux/macOS:
-    source venv/bin/activate
-    # Windows:
-    # venv\Scripts\activate
-    ```
+# Activate environment
+# Linux/macOS
+source venv/bin/activate
 
-3.  **Install Dependencies:**
+# Windows
+venv\Scripts\activate
+```
 
-    ```bash
-    pip install -r requirements.txt
-    ```
+### 3. Install Dependencies
 
-    *(Ensure you have a `requirements.txt` file listing all needed packages)*
+```bash
+pip install -r requirements.txt
+```
 
-4.  **Configure Environment Variables:**
-    Create a `.env` file in the root directory and add your API key:
+*(Make sure `requirements.txt` lists all necessary packages.)*
 
-    ```env
-    # .env file
-    GEMINI_API_KEY=YOUR_GOOGLE_GEMINI_API_KEY_HERE
-    ```
+### 4. Configure Environment Variables
 
------
+Create a `.env` file in the root directory:
+
+```env
+# .env file
+GEMINI_API_KEY=YOUR_GOOGLE_GEMINI_API_KEY_HERE
+```
+
+---
 
 ## 🚀 Run the Application
-
-Execute the following command in your terminal:
 
 ```bash
 streamlit run app.py
 ```
 
-Navigate to the local URL provided by Streamlit (usually `http://localhost:8501`).
+Then, visit [http://localhost:8501](http://localhost:8501) in your browser.
 
------
+---
 
 ## 🌐 Supported Languages
 
-MinerlexAI supports translation to and from English for the following Indian languages (MBart codes):
+MinerlexAI supports translation to and from English for the following Indian languages (MBart50 codes):
 
-  * Hindi (hi\_IN) - हिन्दी
-  * Bengali (bn\_IN) - বাংলা
-  * Tamil (ta\_IN) - தமிழ்
-  * Telugu (te\_IN) - తెలుగు
-  * Marathi (mr\_IN) - मराठी
-  * Gujarati (gu\_IN) - ગુજરાતી
-  * Malayalam (ml\_IN) - മലയാളം
-  * Kannada (kn\_IN) - ಕನ್ನಡ
-  * Odia (or\_IN) - ଓଡ଼ିଆ
-  * Urdu (ur\_PK) - اردو *(Note: MBart uses Pakistan locale)*
-  * Assamese (as\_IN) - অসমীয়া
-  * *... potentially more supported by MBart50*
+- Hindi (hi_IN) – हिन्दी  
+- Bengali (bn_IN) – বাংলা  
+- Tamil (ta_IN) – தமிழ்  
+- Telugu (te_IN) – తెలుగు  
+- Marathi (mr_IN) – मराठी  
+- Gujarati (gu_IN) – ગુજરાતી  
+- Malayalam (ml_IN) – മലയാളം  
+- Kannada (kn_IN) – ಕನ್ನಡ  
+- Odia (or_IN) – ଓଡ଼ିଆ  
+- Urdu (ur_PK) – اردو *(Note: MBart uses Pakistan locale)*  
+- Assamese (as_IN) – অসমীয়া  
+- *... and more supported by MBart50*
 
------
+---
 
 ## 📝 Important Notes
 
-  * 🔑 **API Key**: A valid Google Gemini API key is essential. Get one from [Google AI Studio](https://aistudio.google.com/).
-  * 🎤 **Microphone**: Browser permission is required for voice input functionality.
-  * ⏳ **Model Download**: The MBart translation model (\~2.4 GB) will be downloaded automatically on first use. This may take some time.
-  * 📄 **PDF Feature**: The PDF upload interface is present but requires backend development (parsing, embedding, RAG) to become functional.
+- 🔑 **API Key**: A valid Google Gemini API key is required. Get one from [Google AI Studio](https://aistudio.google.com/).
+- 🎤 **Microphone**: Browser permissions are needed for voice input.
+- ⏳ **Model Download**: MBart50 (~2.4 GB) will be downloaded on first use — please wait.
+- 📄 **PDF Feature**: UI supports PDF uploads, but backend implementation (like parsing and RAG) is pending.
 
------
+---
 
 ## 🙌 Contributing
 
-Contributions make the open-source community amazing\! If you have ideas for improvements or find a bug:
+We welcome contributions! To get started:
 
-1.  Fork the Project
-2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4.  Push to the Branch (`git push origin feature/AmazingFeature`)
-5.  Open a Pull Request
+1. Fork the project  
+2. Create a new branch:  
+   ```bash
+   git checkout -b feature/AmazingFeature
+   ```
+3. Commit your changes:  
+   ```bash
+   git commit -m "Add AmazingFeature"
+   ```
+4. Push to the branch:  
+   ```bash
+   git push origin feature/AmazingFeature
+   ```
+5. Open a Pull Request
 
-Feel free to open an issue for discussion first\!
+Feel free to open an issue for discussion!
 
------
+---
 
 ## 📄 License
 
-Distributed under the **MIT License**. See `LICENSE` file for more information.
-*(Make sure you have a file named `LICENSE` in your repository)*
+Distributed under the **MIT License**. See the `LICENSE` file for details.
 
------
+---
 
-\<div align="center"\>
+<div align="center">
 
 ## 👤 Author
 
-Built with ❤️ by **Mrinal** | [GitHub Profile](https://github.com/Whisplnspace)
+Built with ❤️ by **Mrinal**  
+[GitHub Profile](https://github.com/Whisplnspace)
 
-\</div\>
+</div>
+
