@@ -116,7 +116,7 @@ GEMINI_API_KEY=YOUR_GOOGLE_GEMINI_API_KEY_HERE
 ## 🚀 Run the Application
 
 ```bash
-streamlit run app.py
+streamlit run main.py
 ```
 
 Then, visit [http://localhost:8501](http://localhost:8501) in your browser.
