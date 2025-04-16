@@ -1,5 +1,4 @@
 
-```markdown
 # 🤖 MinerlexAI
 
 **MinerlexAI** is an AI-powered multilingual assistant designed to simplify and revolutionize the understanding of **Mining Laws**. It leverages **Google Gemini** for legal Q&A, **MBart** for neural machine translation, and **gTTS** for voice synthesis — providing mining law support in multiple Indian languages with voice playback.
